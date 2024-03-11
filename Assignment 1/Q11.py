@@ -18,7 +18,4 @@ for i in range(4):
     sol= linalg.solve(A[i],B[i])
     print('solution for set',i+1,'of linear equations',sol)
     #the ith element of the solution matrix represents to xi th solution
-solution for set 1 of linear equations [ 0.03508772 -0.23684211  0.65789474]
-solution for set 2 of linear equations [0.99578947 0.95789474 0.79157895]
-solution for set 3 of linear equations [-0.79764706  2.79529412 -0.25882353 -2.25176471]
-solution for set 4 of linear equations [ 0.78663239 -1.00257069  1.86632391  1.9125964   1.98971722]
+
