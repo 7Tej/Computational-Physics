@@ -17,5 +17,5 @@ B= array([b1, b2, b3, b4],dtype=object)
 for i in range(4):
     sol= linalg.solve(A[i],B[i])
     print('solution for set',i+1,'of linear equations',sol)
-    #the ith element of the solution matrix represents to xi th solution
+    #the ith element of each solution matrix represents the xi th value
 
