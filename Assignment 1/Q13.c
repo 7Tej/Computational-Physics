@@ -52,10 +52,10 @@ int main() {
         }
     }
 
-    // Convert matrix to GSL matrix
+    // Converting matrix to GSL matrix
     gsl_matrix_view m = gsl_matrix_view_array(&matrix[0][0], n, n);
 
-    // Perform LU decomposition
+    // Performing LU decomposition
     gsl_permutation *p = gsl_permutation_alloc(n);
     int signum;
     gsl_linalg_LU_decomp(&m.matrix, p, &signum);
