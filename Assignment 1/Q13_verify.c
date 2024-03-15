@@ -2,13 +2,35 @@
 
 #include <stdio.h>
 #include <gsl/gsl_matrix.h>
+#include <gsl/gsl_blas.h>
 
-// Function to check if a matrix is upper triangular
-int isUpperTriangular(const gsl_matrix *matrix) {
-    size_t n = matrix->size1;
+int isUpperTriangular(gsl_matrix *m);
+int isLowerTriangular(gsl_matrix *m);
+
+void printMatrix(gsl_matrix *m) {
+    for (size_t i = 0; i < m->size1; i++) {
+        for (size_t j = 0; j < m->size2; j++) {
+            printf("%.2f\t", gsl_matrix_get(m, i, j));
+        }
+        printf("\n");
+    }
+}
+
+void printTriangularType(gsl_matrix *m, const char* matrix_name) {
+    if (isUpperTriangular(m)) {
+        printf("Matrix %s is upper triangular.\n", matrix_name);
+    } else if (isLowerTriangular(m)) {
+        printf("Matrix %s is lower triangular.\n", matrix_name);
+    } else {
+        printf("Matrix %s is neither upper nor lower triangular.\n", matrix_name);
+    }
+}
+
+int isUpperTriangular(gsl_matrix *m) {
+    size_t n = m->size1;
     for (size_t i = 1; i < n; i++) {
         for (size_t j = 0; j < i; j++) {
-            if (gsl_matrix_get(matrix, i, j) != 0.0) {
+            if (gsl_matrix_get(m, i, j) != 0) {
                 return 0; // Not upper triangular
             }
         }
@@ -16,12 +38,11 @@ int isUpperTriangular(const gsl_matrix *matrix) {
     return 1; // Upper triangular
 }
 
-// Function to check if a matrix is lower triangular
-int isLowerTriangular(const gsl_matrix *matrix) {
-    size_t n = matrix->size1;
+int isLowerTriangular(gsl_matrix *m) {
+    size_t n = m->size1;
     for (size_t i = 0; i < n; i++) {
         for (size_t j = i + 1; j < n; j++) {
-            if (gsl_matrix_get(matrix, i, j) != 0.0) {
+            if (gsl_matrix_get(m, i, j) != 0) {
                 return 0; // Not lower triangular
             }
         }
@@ -30,45 +51,52 @@ int isLowerTriangular(const gsl_matrix *matrix) {
 }
 
 int main() {
-    // Variables to store user input
-    int rows, cols;
-    
-    // To get dimensions of the matrix from the user
-    printf("Enter number of rows for the matrix: ");
-    scanf("%d", &rows);
-    printf("Enter number of columns for the matrix: ");
-    scanf("%d", &cols);
-    
-    // To allocate memory for the matrix
-    gsl_matrix *matrix = gsl_matrix_alloc(rows, cols);
-    
-    // To get matrix elements from the user
-    printf("Enter elements of the matrix:\n");
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            double element;
-            printf("Enter element at position (%d, %d): ", i+1, j+1);
-            scanf("%lf", &element);
-            gsl_matrix_set(matrix, i, j, element);
+    int rows1, cols1, rows2, cols2;
+
+    // Input for first matrix
+    printf("Enter dimensions of the first matrix (rows columns): ");
+    scanf("%d %d", &rows1, &cols1);
+
+    gsl_matrix *matrix1 = gsl_matrix_alloc(rows1, cols1);
+    printf("Enter elements of the first matrix:\n");
+    for (int i = 0; i < rows1; i++) {
+        for (int j = 0; j < cols1; j++) {
+            double value;
+            scanf("%lf", &value);
+            gsl_matrix_set(matrix1, i, j, value);
         }
     }
-    
-    // To check if the matrix is upper triangular
-    if (isUpperTriangular(matrix)) {
-        printf("The matrix is upper triangular.\n");
-    } else {
-        printf("The matrix is not upper triangular.\n");
-    }
-    
-    // To check if the matrix is lower triangular
-    if (isLowerTriangular(matrix)) {
-        printf("The matrix is lower triangular.\n");
-    } else {
-        printf("The matrix is not lower triangular.\n");
+
+    // Input for second matrix
+    printf("Enter dimensions of the second matrix (rows columns): ");
+    scanf("%d %d", &rows2, &cols2);
+
+    gsl_matrix *matrix2 = gsl_matrix_alloc(rows2, cols2);
+    printf("Enter elements of the second matrix:\n");
+    for (int i = 0; i < rows2; i++) {
+        for (int j = 0; j < cols2; j++) {
+            double value;
+            scanf("%lf", &value);
+            gsl_matrix_set(matrix2, i, j, value);
+        }
     }
 
-    // Freeing up allocated memory
-    gsl_matrix_free(matrix);
+    // To verify triangular properties
+    printTriangularType(matrix1, "1");
+    printTriangularType(matrix2, "2");
+
+    // To multiply the matrices
+    gsl_matrix *result = gsl_matrix_alloc(rows1, cols2);
+    gsl_blas_dgemm(CblasNoTrans, CblasNoTrans, 1.0, matrix1, matrix2, 0.0, result);
+
+    // To print the result
+    printf("\nProduct of the two matrices:\n");
+    printMatrix(result);
+
+    // Freeing allocated memory
+    gsl_matrix_free(matrix1);
+    gsl_matrix_free(matrix2);
+    gsl_matrix_free(result);
 
     return 0;
 }
