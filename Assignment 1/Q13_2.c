@@ -7,7 +7,7 @@
 int main() {
     const int n = 3;
 
-    // Example 3x3 matrix
+    // 2nd matrix
     double data[3][3] = {
         {10, -1, 0},
         {-1, 10, -2},
