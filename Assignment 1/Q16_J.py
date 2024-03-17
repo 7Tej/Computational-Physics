@@ -63,4 +63,4 @@ while condition:
     
     condition = abs(modulus(X2)-modulus(X1))>e
 
-print('\nSolution: Iteration number=%d, x1=%0.9f, x2=%0.9f, x3 = %0.9f, x4 = %0.9f and x5 = %0.9f\n'% (count,x1,y1,z1,v1,u1))
+print('\nSolution: Iteration number=%d, x1=%0.9f, x2=%0.9f, x3 = %0.9f, x4 = %0.9f and x5 = %0.9f\n'% (count-1,x1,y1,z1,v1,u1))
