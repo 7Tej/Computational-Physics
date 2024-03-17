@@ -1,4 +1,4 @@
-#Gauss-Siedel Method
+#Gauss-Seidel Method
 
 # Defining equations to be solved
 # in diagonally dominant form
