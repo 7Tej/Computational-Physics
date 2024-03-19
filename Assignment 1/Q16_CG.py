@@ -46,7 +46,7 @@ def conjgrad(A, b, x):
         d = r + (r_/r_mod)*d
         r_mod = r_
         print(i+1,')',x)
-    print('\nSolution: Iteration number = ',i) 
+    print('\nSolution: Iteration number = ',i+1) 
     print('\nx1=', x[0],'x2=', x[1],'x3=',x[2],'x4=', x[3],'x5=',x[4])
     return x
     
