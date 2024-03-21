@@ -34,13 +34,8 @@ def power_method(A, tolerance=1e-3, max_iterations=10000):
     
     print('Dominant eigenvalue using Power Method =',μ)
 
-def accuracy(a,b):
-    i= abs(((a-b)/b)*100)
-    print('accuracy=',i,'%')
-   
-
 A=np.array([[2, -1, 0], [-1, 2, -1],[0, -1, 2]])
 eigenvalues= np.linalg.eigvals(A)
 μ_= np.max(np.abs(eigenvalues))
 power_method(A)
-print('Actual dominant eigval=',μ_)
+print('Dominant eigval using numpy.linalg.eigvals() =',μ_)
