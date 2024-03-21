@@ -25,6 +25,6 @@ print("S (singular values):\n", S)
 print("VT (right singular vectors):\n", VT)
 
 E= S**2
-print('Eigvals of either AAT or ATA if SVD is correct=',S**2)
+print('Eigvals of ATA if SVD is correct=',S**2)
 
 print('Computation time=',end - start,'seconds')
