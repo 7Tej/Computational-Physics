@@ -14,6 +14,8 @@ def implicit_euler(h, x_initial, x_final, y_initial):
 
     for i in range(1, num_steps):
         y_values[i] = y_values[i-1] / (1 + 9*h)
+        #Algorithm for implicit Euler: w_j = w_j-1 + hλw_j; w_j = w_j-1 /(1-hλ)
+        #here, λ= -9
 
     return x_values, y_values
 
