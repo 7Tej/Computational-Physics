@@ -35,13 +35,16 @@ for i in range(num_steps):
     y_next = y
 
     # Newton's method of iterations
-    for _ in range(10):  # Using 10 iterations, could be adjusted based on desired precision
+    for _ in range(10):  # Using 10 iterations
         y_next = y + h * f(x + h, y_next)
         # The derivative of f(x, y) with respect to y is -40(y-x), so we use this value for the Jacobian
         y_next -= (y_next - y - h * f(x + h, y_next)) / (-40 * (y_next - x))
 
     # Update y_{n+1}
     y_values[i + 1] = y_next
+#To Print the obtained solution in an array
+print("x values:", x_values)
+print("y values:", y_values)
 
 # To Plot the results
 plt.figure(figsize=(10, 6))
