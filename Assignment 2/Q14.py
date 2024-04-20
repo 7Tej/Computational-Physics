@@ -1,8 +1,6 @@
 from numpy import *
 from matplotlib.pyplot import *
 
-
-
 # Defining the function f(t, y, y_prime)
 def f(t, y, y1):
     return ((t**3) * log(t) + (2 * t * y1 - 2 * y) )/ (t**2)
@@ -40,14 +38,14 @@ for i in range(n):
     # Updating t
     t= t + h
     t_vals.append(t)
-    
+
 
     # Updating y using Euler's method
     yy = y1 + h * f(t_vals[i], y_vals[i], y1_vals[i])
     y= y + h * y1_vals[i]
     y_vals.append(y)
     y1_vals.append(yy)
-    
+
 
 
 # Calculating exact solution
@@ -58,9 +56,9 @@ y_exact = exact_solution(t_exact)
 figure(figsize=(10, 6))
 plot(t_vals, y_vals, label='Euler Method', color='blue')
 plot(t_exact, y_exact, label='Exact Solution', color='red', linestyle='--')
-title("Euler's Method Solution")
-xlabel("t")
-ylabel("y")
+title("Solution to Second Order Differential Equation using \n  Euler Method")
+xlabel(r"t$\rightarrow$")
+ylabel(r"y$\rightarrow$")
 legend()
 grid(True)
 show()
