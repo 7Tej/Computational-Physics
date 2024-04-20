@@ -5,7 +5,7 @@ from matplotlib.pyplot import *
 
 # y' = u
 # u' = -y
-#defining hte differential eqn
+#defining the differential eqn
 
 def F(y, u, x):
     return 2*u-y+x*exp(x)-x
