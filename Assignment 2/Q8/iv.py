@@ -4,16 +4,16 @@ from matplotlib.pyplot import *
 
 # Defining the function representing for dy/dt = f(t, y)
 def func(t,y):
-    return 1+(y/t)
+    return cos(2*t)+sin(3*t)
 
 # Defining the initial condition y(0)
-y0 = 2
+y0 = 1
 
-t_span = (1,2)
-t=t_eval=linspace(1, 2, 101)
+t_span = (0,1)
+t=t_eval=linspace(0, 1, 101)
 #Using Mathematica
 def y_exact(t):
-    return 2*t+t*log(t)
+    return (1/6)*(8-2*cos(3*t)+3*sin(2*t))
 
 
 def num_sol(t_span,y0,t_eval):
