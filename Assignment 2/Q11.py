@@ -36,8 +36,8 @@ for i in range(n_steps):
     x = rk4(ode, x, u0 + i * h, h)
 
 # To Print the solution at a specific value of the argument
-target_u = 3.6*(10**6)/(1+3.6*(10**6))  # Value of the argument 
-print("Solution at t=3.6*10^6 or u =", target_u, "is x =", x)
+target_u = 3.5*(10**6)/(1+3.5*(10**6))  # Value of the argument 
+print("Solution at t=3.5*10^6 or u =", target_u, "is x =", x)
 plot(u_values, x_values, label='RK4')
 title(r"Solution for $\frac{dx}{du} = \frac{1}{(1-u)^2 x^2 +u^2}; u=\frac{t}{1+t}$")
 xlabel(r"u$\rightarrow$")
