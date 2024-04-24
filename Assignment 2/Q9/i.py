@@ -2,6 +2,9 @@ import numpy as np
 from scipy.integrate import solve_bvp
 import matplotlib.pyplot as plt
 
+def exact(x):
+    return log(x)
+    
 def ode(x, y):
     return np.vstack((y[1], -np.exp(-2*y[0])))
 
@@ -24,9 +27,10 @@ y_plot = sol.sol(x_plot)[0]
 #To plot the solution
 plt.figure()
 plt.plot(x_plot, y_plot, label='Numerical solution')
+plt.plot(x_plot, exact(x_plot),'r:', label='Exact solution')
 plt.xlabel(r'x$\rightarrow$')
 plt.ylabel(r'y$\rightarrow$')
-plt.title(r"Numerical solution to y'= $-e^{-2y}$")
+plt.title(r"Solution to y'= $-e^{-2y}$")
 plt.legend()
 plt.grid(True)
 plt.show()
