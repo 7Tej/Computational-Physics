@@ -2,6 +2,8 @@ import numpy as np
 from scipy.integrate import solve_bvp
 import matplotlib.pyplot as plt
 
+def exact(x):
+    return (sin(x))**0.5
 def ode(x, y):
     return np.vstack((y[1], -(2 * (y[1])**3 + y[0]**2 * y[1]) / np.cos(x)))
 
@@ -24,6 +26,7 @@ y_plot = sol.sol(x_plot)[0]
 #To plot the solution
 plt.figure()
 plt.plot(x_plot, y_plot, label='Numerical solution')
+plt.plot(x_plot, exact(x_plot),'r:', label='Exact solution')
 plt.xlabel(r'x$\rightarrow$')
 plt.ylabel(r'y$\rightarrow$')
 plt.title(r"Solution to y''= $-(2(y')^{3}+ y^{2}y')sec(x)$")
