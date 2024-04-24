@@ -2,6 +2,8 @@ import numpy as np
 from scipy.integrate import solve_bvp
 import matplotlib.pyplot as plt
 
+def exact(x):
+    return np.exp(sin(x))
 def ode(x, y):
     return np.vstack((y[1], y[1] * np.cos(x) - y[0] * np.log(np.maximum(y[0], 1e-10))))
 
@@ -24,6 +26,7 @@ y_plot = sol.sol(x_plot)[0]
 #To plot the solution
 plt.figure()
 plt.plot(x_plot, y_plot, label='Numerical solution')
+plt.plot(x_plot, exact(x_plot),'r:', label='Exact solution')
 plt.xlabel(r'x$\rightarrow$')
 plt.ylabel(r'y$\rightarrow$')
 plt.title(r" Solution to y'' = y'cos(x) - yln(y)")
