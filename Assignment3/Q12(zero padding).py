@@ -36,8 +36,8 @@ conv = conv_num[n//2:3*n//2]
 
 figure(figsize=(10,10))
 xlim(-5,5)
-plot(xp, g_func(xp), label='g(x) = exp(-x^2)')
-plot(xp, h_func(xp), label='h(x) = exp(-4x^2)')
+plot(xp, g(xp), label='g(x) = exp(-x^2)')
+plot(xp, h(xp), label='h(x) = exp(-4x^2)')
 plot(xp, conv, 'r.-',label='numerical convolution')
 plot(xp, f(xp), label='analytical convolution')
 title('Plot of Numerical Convolution using DFT \n with Analytical Convolution')
