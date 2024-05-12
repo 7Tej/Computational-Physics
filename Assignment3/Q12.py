@@ -51,7 +51,7 @@ xlabel(r'$x_{p}$')
 ylabel(r'$function(x_{p})$')
 grid()
 legend()
-
+show()
 
 
 
