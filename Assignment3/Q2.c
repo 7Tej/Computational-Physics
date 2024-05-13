@@ -73,7 +73,7 @@ int main() {
         else {
             k[i] = -(N-i) / (N * delta_x);
         }
-        // Calculates and normalizex FFT
+        // Calculates and normalizes FFT
         factor = delta_x * sqrt(1.0/(2*PI)) * creal(cexp(I*k[i]*2*PI*xmin));
         // Converting K(freqiencies) to angular frequencies
         fprintf(output_file, "%f %f\n", 2*PI*k[i], fabs(factor * out[i][0]));
