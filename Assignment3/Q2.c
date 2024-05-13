@@ -62,12 +62,7 @@ int main() {
     FILE *output_file = fopen("box.dat", "w"); // Writing output to a file ''box.dat''
     FILE *output_file2 = fopen("box2.dat", "w"); // Writing analytical solution to a file ''box.2dat''
     
-    /*
-         Since FFTW returns the fourier transform of f(x) in out array with its first element value
-         at k=0. Then it returns N/2-1 values with positive k values and then the remaining N/2 
-         values of the fourier transformed function. Hence we need to adjust the values of k 
-         accordingly 
-    */
+  
     for (i = 0; i < N; ++i) {
         if (i==0){
            k[i] = 0;
