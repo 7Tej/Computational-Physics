@@ -23,7 +23,9 @@ def convolution(g,h):
     FT_gh= FT_g*FT_h
     c=fft.ifft(FT_gh).real
     return c
-    
+g_=g(xp)
+h_=h(xp)
+
 g = pad(g(xp), (0,n), 'constant', constant_values=(0, 0))
 h = pad(h(xp), (0,n), 'constant', constant_values=(0, 0))
 
@@ -36,8 +38,8 @@ conv = conv_num[n//2:3*n//2]
 
 figure(figsize=(10,10))
 xlim(-5,5)
-plot(xp, g(xp), label='g(x) = exp(-x^2)')
-plot(xp, h(xp), label='h(x) = exp(-4x^2)')
+plot(xp, g_, label='g(x) = exp(-x^2)')
+plot(xp, h_, label='h(x) = exp(-4x^2)')
 plot(xp, conv, 'r.-',label='numerical convolution')
 plot(xp, f(xp), label='analytical convolution')
 title('Plot of Numerical Convolution using DFT \n with Analytical Convolution')
