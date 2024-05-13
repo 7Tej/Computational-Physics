@@ -33,6 +33,7 @@ legend()
 grid()
 
 k = n // 10
+Per=[]
 Perr = []
 F_bin = []
 
@@ -41,6 +42,7 @@ for i in range(10):
     x_bin = fxp[i*k:(i+1)*k]
     FT_bin = fft.fft(x_bin, norm='ortho')
     Per_bin = (abs(FT_bin))**2
+    Per.append(Per_bin)
 
     Per_bin_shifted = fft.fftshift(Per_bin)  # Shifts the binned periodogram
     f_bin = fft.fftfreq(k)
@@ -56,6 +58,18 @@ for i in range(10):
     xlabel(r'$k_{q}$')
     legend()
     grid()
+
+subplot(13,1,13)
+#Flattens the arrays
+F_bin_flat= concatenate(F_bin)
+Per_flat = concatenate(Per)
+
+#Histogram plot
+hist2d(F_bin_flat, Per_flat, bins=10,cmap='Blues')
+xlabel(r'$k_{q}$')
+ylabel(r'$|F(k_{q})|^{2}$')
+title('2-D histogram of 10 k bins', loc='right')
+
 
 Bartlett = mean(Perr)  
 print('Spectrum Estimate (Bartlett) =', Bartlett,'units of spectral density')  # Bartlett estimate of power spectrum
