@@ -33,7 +33,6 @@ kq=2*pi*freq
 
 phase = dx * sqrt(n / (2 * pi))*exp(-1j * kq * xmin)
 
-#Transforms DFT to FFT
 FFT= phase*FT
 
 figure(figsize=(8,6))
