@@ -17,7 +17,8 @@ Per = (abs(FT))**2
 f = fft.fftfreq(n)
 freq = 2 * pi * f
 
-subplot(12, 1, 1)
+
+subplot(14, 1, 1)
 scatter(p, fxp, label='Data points', color=rand.rand(3,))  # Random color for scatter plot
 xlabel(r'$p$')
 ylabel(r'$f(x_{p})$')
@@ -25,7 +26,16 @@ title(r'Independent Measurements of a Quantity vs Index')
 legend()
 grid()
 
-subplot(12, 1, 2)
+
+subplot(14,1,2) """This is not in the pdf since I had overlooked it """
+plot(freq,abs(FT),label='DFT')
+legend()
+ylabel(r'$|F(k_{q})|^{2}$')
+xlabel(r'$k_{q}$')
+
+
+
+subplot(14, 1, 3)
 plot(freq, Per, label='Periodogram', color=rand.rand(3,))  # Random color for line plot
 ylabel(r'$|F(k_{q})|^{2}$')
 xlabel(r'$k_{q}$')
@@ -36,6 +46,7 @@ k = n // 10
 Per=[]
 Perr = []
 F_bin = []
+
 
 # Binning the data and the power spectrum into 10 k bins
 for i in range(10):
@@ -52,14 +63,14 @@ for i in range(10):
     Perr.append(Per_bin_shifted)
 
     color = rand.rand(3,)  # Random color for each subplot
-    subplot(12, 1, i+3)
+    subplot(14, 1, i+4)
     plot(freq_bin, Per_bin_shifted, label=f'PS of bin {i+1}', color=color)  # Plots the binned power spectrum 
     ylabel(r'$|F(k_{q})|^{2}$')
     xlabel(r'$k_{q}$')
     legend()
     grid()
 
-subplot(13,1,13)
+subplot(14,1,14)
 #Flattens the arrays
 F_bin_flat= concatenate(F_bin)
 Per_flat = concatenate(Per)
