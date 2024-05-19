@@ -39,4 +39,5 @@ xlabel('Random Numbers')
 ylabel('Density')
 legend(['Uniform PDF', 'LCG Random Numbers'])
 show()
-"""Observation: larger is the m, more uniform is the density histogram"""
+""" Observation: larger is the m, more uniform is the density histogram, 
+LCG is very sensitive to the choice of m,a,c,xo """
