@@ -30,7 +30,6 @@ plot(theta, 'c-')
 xlabel(r'Iteration')
 ylabel(r'$\theta$')
 title('Markov Chain')
-legend()
 
 figure(figsize=(10, 8))
 subplot(2,1,2)
