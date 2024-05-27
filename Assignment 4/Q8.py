@@ -11,7 +11,7 @@ inside_circle = sum(points**2, axis = 1) <=1
 points_inside_circle = sum(inside_circle)
 
 A = (points_inside_circle/n)*4 
-print('Obtained area of the circle =', A)
+print('Obtained area of the circle =', A, 'unit sq')
 
 """ o Area of the square in which the points are generated is 4,
     spanning (-1,1) for both x and y directions
@@ -36,4 +36,4 @@ points_inside_hypersphere = sum(inside_hypersphere)
 # Calculates the volume of the 10-dimensional unit hypersphere
 volume_hypersphere = (points_inside_hypersphere / n) * (2**dimensions)
 
-print('Obtained volume of the 10-dimensional unit hypersphere =', volume_hypersphere)
+print('Obtained volume of the 10-dimensional unit hypersphere =', volume_hypersphere, 'unit^10')
